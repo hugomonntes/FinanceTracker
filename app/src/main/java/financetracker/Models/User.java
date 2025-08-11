@@ -1,10 +1,12 @@
 package financetracker.Models;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
     int id;
     String username;
     String email;
-    String password_hash;
+    String password;
 
     public void setId(int id) {
         this.id = id;
@@ -42,10 +44,23 @@ public class User {
         this.email = email;
     }
 
-    public User(int id, String username, String email, String password_hash) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPassword(String password) {
+        String passHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.password = passHash;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public User(int id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.password_hash = password_hash;
+        this.password = password;
     }
 }
