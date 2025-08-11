@@ -32,6 +32,9 @@ public class User {
     }
 
     public void setEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         boolean regexp = email.matches("^[a-zA-Z0-9._]+@[a-z]+\\.[a-z]{2,}$");
         if (!regexp) {
             throw new IllegalArgumentException();
