@@ -32,7 +32,10 @@ public class User {
     }
 
     public void setEmail(String email) {
-        String regexp = "";
+        boolean regexp = email.matches("^[a-zA-Z0-9._]+@[a-z]+\\.[a-z]{2,}$");
+        if (!regexp) {
+            throw new IllegalArgumentException();
+        }
         this.email = email;
     }
 
