@@ -27,6 +27,15 @@ public class User {
         this.username = usernameFormated;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setEmail(String email) {
+        String regexp = "";
+        this.email = email;
+    }
+
     public User(int id, String username, String email, String password_hash) {
         this.id = id;
         this.username = username;
