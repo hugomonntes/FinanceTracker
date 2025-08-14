@@ -30,4 +30,14 @@ public class UserDAO {
         stmt.close();
         return users;
     }
+
+    public User getUniqueItem(int key) throws SQLException { //FIXME
+        Statement stmt = this.connection.client.createStatement();
+        String query = "SELECT * FROM users WHERE id = " + key;
+        ResultSet result = stmt.executeQuery(query);
+        result.next();
+        stmt.close();
+        return new User(result.getInt("id"), result.getString("username"), result.getString("email"),
+                result.getString("password_hash"));
+    }
 }
