@@ -31,16 +31,21 @@ public class UserDAO {
         return users;
     }
 
-    public User getUniqueItem(int key) throws SQLException { //FIXME
+    public User getUniqueItem(int key) throws SQLException { // FIXME
         Statement stmt = this.connection.client.createStatement();
         String query = "SELECT * FROM users WHERE id = " + key;
         ResultSet result = stmt.executeQuery(query);
-        while (result.next()) {
-            stmt.executeQuery(query);
+        User user = new User();
+        if (result.next()) {
+            user = new User(
+                    result.getInt("id"),
+                    result.getString("username"),
+                    result.getString("email"),
+                    result.getString("password_hash"));
         }
+
         result.next();
         stmt.close();
-        return new User(result.getInt("id"), result.getString("username"), result.getString("email"),
-                result.getString("password_hash"));
+        return user;
     }
 }
