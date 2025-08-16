@@ -36,7 +36,7 @@ public class UserDAO {
         String query = "SELECT * FROM users WHERE id = " + key;
         ResultSet result = stmt.executeQuery(query);
         while (result.next()) {
-            
+            stmt.executeQuery(query);
         }
         result.next();
         stmt.close();
