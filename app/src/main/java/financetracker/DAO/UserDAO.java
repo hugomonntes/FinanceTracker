@@ -31,7 +31,7 @@ public class UserDAO {
         return users;
     }
 
-    public User getUniqueItem(int key) throws SQLException { // FIXME
+    public User getUniqueItem(int key) throws SQLException {
         Statement stmt = this.connection.client.createStatement();
         String query = "SELECT * FROM users WHERE id = " + key;
         ResultSet result = stmt.executeQuery(query);
