@@ -51,6 +51,10 @@ public class UserDAO {
 
     public void createItem(User newUser) throws SQLException {
         Statement stmt = this.connection.client.createStatement();
-        String consulta = String.format("INSERT INTO ", null);
+        String consulta = String.format(
+                "INSERT INTO users (id, username, email, password_hash) VALUES (%d, %s, %s, %s)", newUser.getId(),
+                newUser.getUsername(), newUser.getEmail(), newUser.getPassword());
+        stmt.executeUpdate(consulta);
+        stmt.close();
     }
 }
