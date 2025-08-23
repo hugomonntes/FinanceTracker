@@ -49,11 +49,11 @@ public class UserDAO {
         return user;
     }
 
-    public void createItem(User newUser) throws SQLException {
+    public void createItem(User userToAdd) throws SQLException {
         Statement stmt = this.connection.client.createStatement();
         String consulta = String.format(
-                "INSERT INTO users (id, username, email, password_hash) VALUES (%d, %s, %s, %s)", newUser.getId(),
-                newUser.getUsername(), newUser.getEmail(), newUser.getPassword());
+                "INSERT INTO users (id, username, email, password_hash) VALUES (%d, %s, %s, %s)", userToAdd.getId(),
+                userToAdd.getUsername(), userToAdd.getEmail(), userToAdd.getPassword());
         stmt.executeUpdate(consulta);
         stmt.close();
     }
