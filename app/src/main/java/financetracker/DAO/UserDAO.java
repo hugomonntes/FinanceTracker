@@ -48,4 +48,9 @@ public class UserDAO {
         stmt.close();
         return user;
     }
+
+    public void createItem(User newUser) throws SQLException {
+        Statement stmt = this.connection.client.createStatement();
+        String consulta = String.format("INSERT INTO ", null);
+    }
 }
