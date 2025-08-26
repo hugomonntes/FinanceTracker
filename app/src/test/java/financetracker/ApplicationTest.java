@@ -1,21 +1,30 @@
 
 package financetracker;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import financetracker.DAO.ConnectionDB;
 import financetracker.DAO.UserDAO;
 import financetracker.Models.User;
 
 @DisplayName("Application")
 public class ApplicationTest {
-  private UserDAO userDAO;
+  ConnectionDB connDB = new ConnectionDB("jdbc:mysql://localhost:3306/financetracker", "root", "");
+  UserDAO userDAO;
+  User newUser = new User(1, "hugo", "hmontes@gmail.com", "123");
 
   @Test
   void testCreateItem() throws SQLException {
-    User newUser = new User(1, "hugo", "hmontes@gmail.com", "123");
+    connDB.initConexion();
+    userDAO = new UserDAO(connDB);
     userDAO.createItem(newUser);
+
+    User userToCompare = userDAO.getUniqueItem(1);
+    assertEquals("hugo", userToCompare.getUsername());
   }
 }
