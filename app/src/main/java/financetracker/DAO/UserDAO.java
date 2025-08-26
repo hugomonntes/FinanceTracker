@@ -44,7 +44,6 @@ public class UserDAO {
                     result.getString("password_hash"));
         }
 
-        result.next();
         stmt.close();
         return user;
     }
