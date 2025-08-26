@@ -29,7 +29,7 @@ public class ApplicationTest {
   }
 
   @Test
-  void testCheckPassword(){ // TODO fix password hash login, user put her password and this is not equals than the bd pass
+  void testCheckPassword(){ // FIXME fix password hash login, user put her password and this is not equals than the bd pass
     assertEquals(newUser.getPassword(), "123");
   }
 }

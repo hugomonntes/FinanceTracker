@@ -65,4 +65,12 @@ public class User {
     }
 
     public User(){}
+
+    public boolean checkLogin(String email, String password){ // FIXME
+        if (email.isEmpty() || email == null || password.isEmpty() || password == null) {
+            throw new IllegalArgumentException("Email or password has been denied!");
+        }
+
+        return BCrypt.checkpw(password, getPassword());
+    }
 }
