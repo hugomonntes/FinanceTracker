@@ -14,9 +14,9 @@ import financetracker.Models.User;
 
 @DisplayName("Application")
 public class ApplicationTest {
-  ConnectionDB connDB = new ConnectionDB("jdbc:mysql://localhost:3306/financetracker", "root", "");
-  UserDAO userDAO;
+  ConnectionDB connDB = new ConnectionDB("jdbc:mysql://localhost:3306/FinanceTracker", "root", "");
   User newUser = new User(1, "hugo", "hmontes@gmail.com", "123");
+  UserDAO userDAO;
 
   @Test
   void testCreateItem() throws SQLException {
@@ -26,5 +26,10 @@ public class ApplicationTest {
 
     User userToCompare = userDAO.getUniqueItem(1);
     assertEquals("hugo", userToCompare.getUsername());
+  }
+
+  @Test
+  void testCheckPassword(){ // TODO fix password hash login, user put her password and this is not equals than the bd pass
+    assertEquals(newUser.getPassword(), "123");
   }
 }
