@@ -2,6 +2,7 @@
 package financetracker;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.SQLException;
 
@@ -30,6 +31,6 @@ public class ApplicationTest {
 
   @Test
   void testCheckPassword(){ // FIXME fix password hash login, user put her password and this is not equals than the bd pass
-    assertEquals(newUser.getPassword(), "123");
+    assertTrue(newUser.checkLogin(newUser.getEmail(), newUser.getPassword()));
   }
 }
