@@ -14,13 +14,18 @@ import financetracker.DAO.UserDAO;
 import financetracker.Models.User;
 
 @DisplayName("Application")
-public class ApplicationTest {
+public class DaoTest {
   ConnectionDB connDB = new ConnectionDB("jdbc:mysql://localhost:3306/FinanceTracker", "root", "");
   User newUser = new User(1, "hugo", "hmontes@gmail.com", "123");
   UserDAO userDAO;
 
   @Test
-  void testCreateItem() throws SQLException {
+  void getAllItems() {
+     
+  }
+
+  @Test
+  void testCreateItem() throws SQLException { // TODO preguntar fukin si esta bien 
     connDB.initConexion();
     userDAO = new UserDAO(connDB);
     userDAO.createItem(newUser);
