@@ -30,7 +30,9 @@ public class ApplicationTest {
   }
 
   @Test
-  void testCheckPassword(){ // FIXME fix password hash login, user put her password and this is not equals than the bd pass
-    
+  void testCheckPassword() {
+    User fukin = new User();
+    fukin.setPassword("123");
+    assertTrue(fukin.checkPassword(fukin.getPassword()));
   }
 }
