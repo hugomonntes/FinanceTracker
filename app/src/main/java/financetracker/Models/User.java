@@ -49,7 +49,8 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        String passHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        this.password = passHash;
     }
 
     public String getPassword() {
@@ -65,11 +66,11 @@ public class User {
 
     public User(){}
 
-    public String hashPassword(String password){
-        if (password.isEmpty() || password == null) {
-            throw new IllegalArgumentException("Password has been denied!");
+    public boolean checkLogin(String email, String password){ // FIXME
+        if (email.isEmpty() || email == null || password.isEmpty() || password == null) {
+            throw new IllegalArgumentException("Email or password has been denied!");
         }
 
-        return BCrypt.hashpw(password, BCrypt.gensalt());
+        return BCrypt.checkpw(password, getPassword());
     }
 }
