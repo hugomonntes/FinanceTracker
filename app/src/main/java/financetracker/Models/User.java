@@ -70,7 +70,6 @@ public class User {
         if (password.isEmpty() || password == null) {
             throw new IllegalArgumentException("Email or password has been denied!");
         }
-
         return BCrypt.checkpw(password, this.getPassword());
     }
 }
