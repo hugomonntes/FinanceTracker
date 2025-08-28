@@ -27,7 +27,7 @@ public class ConnectionDB {
         }
     }
 
-    public void stopConexion() {
+    public void closeConexion() {
         try {
             client.close();
             System.err.println("Disconnected");

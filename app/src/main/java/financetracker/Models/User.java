@@ -64,12 +64,25 @@ public class User {
         setPassword(password);
     }
 
-    public User(){}
+    public User() {
+    }
 
-    public boolean checkPassword(String password){
+    public boolean checkPassword(String password) {
         if (password.isEmpty() || password == null) {
             throw new IllegalArgumentException("Email or password has been denied!");
         }
         return BCrypt.checkpw(password, this.getPassword());
+    }
+
+    @Override
+    public boolean equals(Object obj) { // TODO Fix when pass hash is fixed add to equals check
+        if (obj instanceof User) {
+            User objAux = (User) obj;
+            if (this.getId() == objAux.getId() && this.getUsername().equals(objAux.getUsername())
+                    && this.getEmail().equals(objAux.getEmail())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
