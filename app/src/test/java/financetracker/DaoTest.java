@@ -74,7 +74,7 @@ public class DaoTest {
   }
 
   @Test
-  void testCreateItem() throws SQLException { // TODO preguntar fukin si esta bien
+  void testCreateItem() throws SQLException {
 
   }
 
