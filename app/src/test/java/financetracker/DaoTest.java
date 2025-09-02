@@ -44,10 +44,6 @@ public class DaoTest {
     stmt.close();
   }
 
-  // Devuelve un array con los usuarios que hay en la base de datos
-  // Tipos de comprobación
-  // 1º Coinciden el numero de elementos?
-  // 2º
   @Test
   void testGetAllItems() throws SQLException {
     Statement stmt = connDB.client.createStatement();
@@ -76,9 +72,9 @@ public class DaoTest {
   @Test
   void testCreateItem() throws SQLException {
       ArrayList<User> usersToCompare = new ArrayList<>();
-      userDAO.createItem(new User());
-      
-      
+      usersToCompare.add(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
+      userDAO.createItem(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
+      assertArrayEquals(usersToCompare.toArray(), userDAO.getAllItems().toArray());
   }
 
   @Test
