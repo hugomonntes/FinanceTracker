@@ -77,6 +77,8 @@ public class DaoTest {
   void testCreateItem() throws SQLException {
       ArrayList<User> usersToCompare = new ArrayList<>();
       userDAO.createItem(new User());
+      
+      
   }
 
   @Test
