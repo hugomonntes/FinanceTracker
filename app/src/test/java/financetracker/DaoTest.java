@@ -3,6 +3,7 @@ package financetracker;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.SQLException;
@@ -71,10 +72,29 @@ public class DaoTest {
 
   @Test
   void testCreateItem() throws SQLException {
-      ArrayList<User> usersToCompare = new ArrayList<>();
-      usersToCompare.add(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
-      userDAO.createItem(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
-      assertArrayEquals(usersToCompare.toArray(), userDAO.getAllItems().toArray());
+    ArrayList<User> usersToCompare = new ArrayList<>();
+    usersToCompare.add(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
+    userDAO.createItem(new User(42, "aaaaasdfaa", "asfdasfasf@asdfa.com", "pddddaasdfass"));
+    assertArrayEquals(usersToCompare.toArray(), userDAO.getAllItems().toArray());
+  }
+
+  @Test
+  void testUpdateItem() throws SQLException {
+    Statement stmt = connDB.client.createStatement();
+    String query = String.format(
+        "INSERT INTO users (id, username, email, password_hash) VALUES (%d, '%s', '%s', '%s')",
+        1, "fukin", "f@asdfa.com", "pass");
+    stmt.executeUpdate(query);
+    stmt.close();
+
+    ArrayList<User> usersToCompare = new ArrayList<>();
+    usersToCompare.add(new User(1, "fukin", "f@asdfa.com", "pass"));
+    userDAO.updateItem(1, new User(1, "fukinn", "f@asdfa.com", "pass")); // FIXME no modificar id
+    // assertArrayEquals(usersToCompare.toArray(), userDAO.getAllItems().toArray());
+    for (User user : userDAO.getAllItems()) {
+      boolean isSame = usersToCompare.contains(user);
+      assertFalse(isSame);
+    }
   }
 
   @Test
