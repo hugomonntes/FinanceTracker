@@ -79,8 +79,7 @@ public class DaoTest {
   }
 
   @Test
-  void testUpdateItem() throws SQLException { // TODO creo que hay que tener dos arrays iguales y modificarlo sobre el
-                                              // id y hacer un assertEquals o algo asi
+  void testUpdateItem() throws SQLException {
     Statement stmt = connDB.client.createStatement();
     String query = String.format(
         "INSERT INTO users (id, username, email, password_hash) VALUES (%d, '%s', '%s', '%s')",
@@ -90,8 +89,7 @@ public class DaoTest {
 
     ArrayList<User> usersToCompare = new ArrayList<>();
     usersToCompare.add(new User(1, "fukin", "f@asdfa.com", "pass"));
-    userDAO.updateItem(1, new User(1, "fukinn", "f@asdfa.com", "pass")); // FIXME no modificar id
-    // assertArrayEquals(usersToCompare.toArray(), userDAO.getAllItems().toArray());
+    userDAO.updateItem(1, new User("fukinn", "f@asdfa.com", "pass"));
     for (User user : userDAO.getAllItems()) {
       boolean isSame = usersToCompare.contains(user);
       assertFalse(isSame);

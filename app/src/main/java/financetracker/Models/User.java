@@ -64,6 +64,12 @@ public class User {
         setPassword(password);
     }
 
+    public User(String username, String email, String password) {
+        setUsername(username);
+        setEmail(email);
+        setPassword(password);
+    }
+
     public User() {
     }
 
