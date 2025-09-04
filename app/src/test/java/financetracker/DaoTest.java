@@ -95,11 +95,4 @@ public class DaoTest {
       assertFalse(isSame);
     }
   }
-
-  @Test
-  void testCheckPassword() {
-    User fukin = new User();
-    fukin.setPassword("123");
-    assertTrue(fukin.checkPassword(fukin.getPassword()));
-  }
 }
