@@ -79,7 +79,8 @@ public class DaoTest {
   }
 
   @Test
-  void testUpdateItem() throws SQLException {
+  void testUpdateItem() throws SQLException { // TODO creo que hay que tener dos arrays iguales y modificarlo sobre el
+                                              // id y hacer un assertEquals o algo asi
     Statement stmt = connDB.client.createStatement();
     String query = String.format(
         "INSERT INTO users (id, username, email, password_hash) VALUES (%d, '%s', '%s', '%s')",
