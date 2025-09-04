@@ -2,6 +2,7 @@
 package financetracker;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,6 +29,6 @@ public class UserTest {
   void testCheckPassword() {
     User fukin = new User();
     fukin.setPassword("123");
-    assertTrue(fukin.checkPassword(fukin.getPassword()));
+    assertTrue(fukin.checkPassword(fukin.getPassword()), "" + fukin.getPassword());
   }
 }
