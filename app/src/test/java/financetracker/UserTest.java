@@ -30,7 +30,6 @@ public class UserTest {
   void testCheckPassword() throws SQLException {
     User fukin = new User();
     fukin.setPassword("aaa");
-    String hashGuardado = fukin.getPassword();
-    assertTrue(BCrypt.checkpw("aaa", hashGuardado));
+    assertTrue(fukin.checkPassword("aaa"));
   }
 }
