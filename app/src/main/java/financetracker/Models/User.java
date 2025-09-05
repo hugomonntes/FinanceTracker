@@ -74,7 +74,7 @@ public class User {
     }
 
     public boolean checkPassword(String password) {
-        if (password.isEmpty() || password == null) {
+        if (password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Email or password has been denied!");
         }
         return BCrypt.checkpw(password, this.getPassword());

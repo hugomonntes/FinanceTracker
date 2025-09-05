@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mindrot.jbcrypt.BCrypt;
 
 import financetracker.Models.User;
 
@@ -29,6 +30,7 @@ public class UserTest {
   void testCheckPassword() throws SQLException {
     User fukin = new User();
     fukin.setPassword("aaa");
-    assertTrue(fukin.checkPassword("$2a$10$XNXq6ikcBvkEEG0UK4u5hepLj7VdYxSU4QkK/G298FroxQf74Pf4O"), fukin.getPassword());
+    String hashGuardado = fukin.getPassword();
+    assertTrue(BCrypt.checkpw("aaa", hashGuardado));
   }
 }
