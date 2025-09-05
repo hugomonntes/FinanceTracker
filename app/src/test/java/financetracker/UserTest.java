@@ -24,7 +24,6 @@ public class UserTest {
     assertNotEquals(user1, user3);
   }
 
-
   @Test
   void testCheckPassword() {
     User fukin = new User();
